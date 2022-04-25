@@ -307,6 +307,7 @@ locals {
     azure = local.az2,
     gcp   = local.cloud == "gcp" ? length(var.ha_region) > 0 ? "${var.ha_region}-${local.az2}" : "${var.region}-${local.az2}" : null
   }
+
   ha_insane_mode_az = var.insane_mode ? lookup(local.ha_insane_mode_az_map, local.cloud, null) : null
   ha_insane_mode_az_map = {
     aws = local.cloud == "aws" ? "${var.region}${local.az2}" : null
@@ -381,7 +382,7 @@ locals {
       )
     )
   )
-  
+
   ha_subnet_map = {
     aws   = 1,
     azure = 0,
