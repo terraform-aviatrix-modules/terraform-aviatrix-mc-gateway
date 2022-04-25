@@ -256,18 +256,21 @@ variable "dns_name_servers" {
   description = "List of DNS servers to use to resolve domain names by VPN users, connected to a VPN-enabled Split-Tunnel-enabled gateway"
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 variable "search_domains" {
   description = "List of domain names that will use the Nameserver when specific name not in destination. Only for VPN-enabled Split-Tunnel-enabled gateways"
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 variable "additional_cidrs" {
   description = "List of destination CIDR ranges that will also go through VPN tunnel. Only for VPN-enabled Split-Tunnel-enabled gateways"
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 # Locals
@@ -356,7 +359,7 @@ locals {
   enable_elb   = var.enable_vpn && (local.cloud != "oci") ? var.enable_elb : false
   vpn_protocol = local.cloud == "oci" ? "UDP" : upper(var.vpn_protocol)
 
-  dns_name_servers_liststring = length(var.dns_name_servers) > 0 ? join(",", var.dns_name_servers) : ""
-  search_domains_liststring   = length(var.search_domains) > 0 ? join(",", var.search_domains) : ""
-  additional_cidrs_liststring = length(var.additional_cidrs) > 0 ? join(",", var.additional_cidrs) : ""
+  dns_name_servers_liststring = join(",", var.dns_name_servers)
+  search_domains_liststring   = join(",", var.search_domains)
+  additional_cidrs_liststring = join(",", var.additional_cidrs)
 }
