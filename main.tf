@@ -7,8 +7,6 @@ resource "aviatrix_vpc" "default" {
   cidr         = local.cloud == "gcp" ? null : var.cidr
   name         = local.name
 
-  aviatrix_transit_vpc = false
-  aviatrix_firenet_vpc = false
   # subnet_size = 
   # num_subnet_pairs = 
   # resource_group = 
