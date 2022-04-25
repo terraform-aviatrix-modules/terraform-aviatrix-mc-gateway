@@ -12,7 +12,7 @@ variable "cloud" {
 variable "name" {
   description = "Name of VPC and gateway"
   type        = string
-  
+
   validation {
     condition     = length(var.name) <= 50
     error_message = "Name is too long. Max length is 50 characters."
