@@ -336,7 +336,22 @@ locals {
 
   # If using existing VPC, use specified gw subnet
   # Otherwise, if AWS/Azure Insane Mode, use insane mode subnet; if GCP, set the subnet based on the map {}. Else, set subnet as index-0 of the created VPC's subnet CIDR
-  subnet = var.use_existing_vpc ? var.gw_subnet : (var.insane_mode && contains(["aws", "azure"], local.cloud) ? local.insane_mode_subnet : (local.cloud == "gcp" ? aviatrix_vpc.mc_vpc[0].subnets[local.subnet_map[local.cloud]].cidr : aviatrix_vpc.mc_vpc[0].public_subnets[local.subnet_map[local.cloud]].cidr))
+  subnet = (
+    (var.use_existing_vpc ?
+      var.gw_subnet
+      :
+      (var.insane_mode && contains(["aws", "azure"], local.cloud) ?
+        local.insane_mode_subnet
+        :
+        (local.cloud == "gcp" ?
+          aviatrix_vpc.mc_vpc[0].subnets[local.subnet_map[local.cloud]].cidr
+          :
+          aviatrix_vpc.mc_vpc[0].public_subnets[local.subnet_map[local.cloud]].cidr
+        )
+      )
+    )
+  )
+
   subnet_map = {
     aws   = 0,
     azure = 0,
@@ -347,7 +362,26 @@ locals {
   # If using existing VPC, and is Azure or OCI, set HA subnet as gw_subnet, otherwise as hagw_subnet (cont)
   # If it is AWS/Azure Insane Mode, use insane mode HA subnet; if GCP, set HA subnet based on the map {}
   # Else, set subnet based on the ha_subnet_map
-  ha_subnet = var.use_existing_vpc ? (contains(["azure", "oci"], local.cloud) ? var.gw_subnet : var.hagw_subnet) : (var.insane_mode && contains(["aws", "azure"], local.cloud) ? local.ha_insane_mode_subnet : (local.cloud == "gcp" ? aviatrix_vpc.mc_vpc[0].subnets[local.ha_subnet_map[local.cloud]].cidr : aviatrix_vpc.mc_vpc[0].public_subnets[local.ha_subnet_map[local.cloud]].cidr))
+  ha_subnet = (
+    (var.use_existing_vpc ?
+      (contains(["azure", "oci"], local.cloud) ?
+        var.gw_subnet
+        :
+        var.hagw_subnet
+      )
+      :
+      (var.insane_mode && contains(["aws", "azure"], local.cloud) ?
+        local.ha_insane_mode_subnet
+        :
+        (local.cloud == "gcp" ?
+          aviatrix_vpc.mc_vpc[0].subnets[local.ha_subnet_map[local.cloud]].cidr
+          :
+          aviatrix_vpc.mc_vpc[0].public_subnets[local.ha_subnet_map[local.cloud]].cidr
+        )
+      )
+    )
+  )
+  
   ha_subnet_map = {
     aws   = 1,
     azure = 0,
