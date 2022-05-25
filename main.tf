@@ -1,4 +1,4 @@
-resource "aviatrix_vpc" "mc_vpc" {
+resource "aviatrix_vpc" "default" {
   count = var.use_existing_vpc ? 0 : 1
 
   cloud_type   = local.cloud_type
@@ -7,8 +7,6 @@ resource "aviatrix_vpc" "mc_vpc" {
   cidr         = local.cloud == "gcp" ? null : var.cidr
   name         = local.name
 
-  aviatrix_transit_vpc = false
-  aviatrix_firenet_vpc = false
   # subnet_size = 
   # num_subnet_pairs = 
   # resource_group = 
@@ -32,10 +30,10 @@ resource "aviatrix_vpc" "mc_vpc" {
   }
 }
 
-resource "aviatrix_gateway" "gw" {
+resource "aviatrix_gateway" "default" {
   cloud_type          = local.cloud_type
   account_name        = var.account
-  vpc_id              = var.use_existing_vpc ? var.vpc_id : aviatrix_vpc.mc_vpc[0].vpc_id
+  vpc_id              = var.use_existing_vpc ? var.vpc_id : aviatrix_vpc.default[0].vpc_id
   vpc_reg             = local.region
   subnet              = local.subnet
   gw_name             = local.name

@@ -256,18 +256,21 @@ variable "dns_name_servers" {
   description = "List of DNS servers to use to resolve domain names by VPN users, connected to a VPN-enabled Split-Tunnel-enabled gateway"
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 variable "search_domains" {
   description = "List of domain names that will use the Nameserver when specific name not in destination. Only for VPN-enabled Split-Tunnel-enabled gateways"
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 variable "additional_cidrs" {
   description = "List of destination CIDR ranges that will also go through VPN tunnel. Only for VPN-enabled Split-Tunnel-enabled gateways"
   type        = list(string)
   default     = []
+  nullable    = false
 }
 
 # Locals
@@ -304,6 +307,7 @@ locals {
     azure = local.az2,
     gcp   = local.cloud == "gcp" ? length(var.ha_region) > 0 ? "${var.ha_region}-${local.az2}" : "${var.region}-${local.az2}" : null
   }
+
   ha_insane_mode_az = var.insane_mode ? lookup(local.ha_insane_mode_az_map, local.cloud, null) : null
   ha_insane_mode_az_map = {
     aws = local.cloud == "aws" ? "${var.region}${local.az2}" : null
@@ -333,7 +337,22 @@ locals {
 
   # If using existing VPC, use specified gw subnet
   # Otherwise, if AWS/Azure Insane Mode, use insane mode subnet; if GCP, set the subnet based on the map {}. Else, set subnet as index-0 of the created VPC's subnet CIDR
-  subnet = var.use_existing_vpc ? var.gw_subnet : (var.insane_mode && contains(["aws", "azure"], local.cloud) ? local.insane_mode_subnet : (local.cloud == "gcp" ? aviatrix_vpc.mc_vpc[0].subnets[local.subnet_map[local.cloud]].cidr : aviatrix_vpc.mc_vpc[0].public_subnets[local.subnet_map[local.cloud]].cidr))
+  subnet = (
+    (var.use_existing_vpc ?
+      var.gw_subnet
+      :
+      (var.insane_mode && contains(["aws", "azure"], local.cloud) ?
+        local.insane_mode_subnet
+        :
+        (local.cloud == "gcp" ?
+          aviatrix_vpc.default[0].subnets[local.subnet_map[local.cloud]].cidr
+          :
+          aviatrix_vpc.default[0].public_subnets[local.subnet_map[local.cloud]].cidr
+        )
+      )
+    )
+  )
+
   subnet_map = {
     aws   = 0,
     azure = 0,
@@ -344,7 +363,26 @@ locals {
   # If using existing VPC, and is Azure or OCI, set HA subnet as gw_subnet, otherwise as hagw_subnet (cont)
   # If it is AWS/Azure Insane Mode, use insane mode HA subnet; if GCP, set HA subnet based on the map {}
   # Else, set subnet based on the ha_subnet_map
-  ha_subnet = var.use_existing_vpc ? (contains(["azure", "oci"], local.cloud) ? var.gw_subnet : var.hagw_subnet) : (var.insane_mode && contains(["aws", "azure"], local.cloud) ? local.ha_insane_mode_subnet : (local.cloud == "gcp" ? aviatrix_vpc.mc_vpc[0].subnets[local.ha_subnet_map[local.cloud]].cidr : aviatrix_vpc.mc_vpc[0].public_subnets[local.ha_subnet_map[local.cloud]].cidr))
+  ha_subnet = (
+    (var.use_existing_vpc ?
+      (contains(["azure", "oci"], local.cloud) ?
+        var.gw_subnet
+        :
+        var.hagw_subnet
+      )
+      :
+      (var.insane_mode && contains(["aws", "azure"], local.cloud) ?
+        local.ha_insane_mode_subnet
+        :
+        (local.cloud == "gcp" ?
+          aviatrix_vpc.default[0].subnets[local.ha_subnet_map[local.cloud]].cidr
+          :
+          aviatrix_vpc.default[0].public_subnets[local.ha_subnet_map[local.cloud]].cidr
+        )
+      )
+    )
+  )
+
   ha_subnet_map = {
     aws   = 1,
     azure = 0,
@@ -356,7 +394,7 @@ locals {
   enable_elb   = var.enable_vpn && (local.cloud != "oci") ? var.enable_elb : false
   vpn_protocol = local.cloud == "oci" ? "UDP" : upper(var.vpn_protocol)
 
-  dns_name_servers_liststring = length(var.dns_name_servers) > 0 ? join(",", var.dns_name_servers) : ""
-  search_domains_liststring   = length(var.search_domains) > 0 ? join(",", var.search_domains) : ""
-  additional_cidrs_liststring = length(var.additional_cidrs) > 0 ? join(",", var.additional_cidrs) : ""
+  dns_name_servers_liststring = join(",", var.dns_name_servers)
+  search_domains_liststring   = join(",", var.search_domains)
+  additional_cidrs_liststring = join(",", var.additional_cidrs)
 }
