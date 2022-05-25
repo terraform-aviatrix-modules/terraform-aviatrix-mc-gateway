@@ -345,9 +345,9 @@ locals {
         local.insane_mode_subnet
         :
         (local.cloud == "gcp" ?
-          aviatrix_vpc.mc_vpc[0].subnets[local.subnet_map[local.cloud]].cidr
+          aviatrix_vpc.default[0].subnets[local.subnet_map[local.cloud]].cidr
           :
-          aviatrix_vpc.mc_vpc[0].public_subnets[local.subnet_map[local.cloud]].cidr
+          aviatrix_vpc.default[0].public_subnets[local.subnet_map[local.cloud]].cidr
         )
       )
     )
@@ -375,9 +375,9 @@ locals {
         local.ha_insane_mode_subnet
         :
         (local.cloud == "gcp" ?
-          aviatrix_vpc.mc_vpc[0].subnets[local.ha_subnet_map[local.cloud]].cidr
+          aviatrix_vpc.default[0].subnets[local.ha_subnet_map[local.cloud]].cidr
           :
-          aviatrix_vpc.mc_vpc[0].public_subnets[local.ha_subnet_map[local.cloud]].cidr
+          aviatrix_vpc.default[0].public_subnets[local.ha_subnet_map[local.cloud]].cidr
         )
       )
     )
