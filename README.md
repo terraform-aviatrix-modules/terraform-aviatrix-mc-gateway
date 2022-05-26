@@ -3,10 +3,11 @@
 ## Description
 Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an existing VPC/VNet/VCN.
 
-## Compatability
+## Compatibility
 | Module version | Terraform version | Controller version | Terraform provider version |
 | :------------: | :---------------: | :----------------: | :------------------------: |
 |     v1.0.0     |     0.13-1.x      |       >=6.6        |       2.21.2-6.6.ga        |
+|     v1.0.1     |     0.13-1.x      |       >=6.7        |           2.22.0           |
 
 - Check [release notes](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-spoke/blob/master/RELEASE_NOTES.md) for more details.
 - Check [Compatibility list](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-spoke/blob/master/COMPATIBILITY.md) for older versions.
