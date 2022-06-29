@@ -273,6 +273,12 @@ variable "additional_cidrs" {
   nullable    = false
 }
 
+variable "saml_enabled" {
+  description = "Enable/disable SAML."
+  type        = bool
+  default     = null
+}
+
 # Locals
 locals {
   cloud                 = lower(var.cloud)

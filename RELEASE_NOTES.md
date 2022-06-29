@@ -1,5 +1,9 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.0.2
+
+### Add support for toggling SAML on
+
 ## v1.0.0
 
 ### Initial release

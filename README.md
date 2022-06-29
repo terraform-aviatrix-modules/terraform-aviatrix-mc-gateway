@@ -6,11 +6,11 @@ Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an exist
 ## Compatibility
 | Module version | Terraform version | Controller version | Terraform provider version |
 | :------------: | :---------------: | :----------------: | :------------------------: |
-|     v1.0.0     |     0.13-1.x      |       >=6.6        |       2.21.2-6.6.ga        |
+|     v1.0.2     |     >=1.0         |       >=6.7        |          ~>2.22.0          |
 |     v1.0.1     |     0.13-1.x      |       >=6.7        |           2.22.0           |
+|     v1.0.0     |     0.13-1.x      |       >=6.6        |       2.21.2-6.6.ga        |
 
-- Check [release notes](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-spoke/blob/master/RELEASE_NOTES.md) for more details.
-- Check [Compatibility list](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-spoke/blob/master/COMPATIBILITY.md) for older versions.
+- Check [release notes](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-gateway/blob/master/RELEASE_NOTES.md) for more details.
 
 ## Usage examples
 See [examples](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-gateway/blob/main/examples/)
@@ -73,6 +73,7 @@ The following variables are optional:
 |     enable_vpn_nat     |         ALL         |      true       |                                             Set to true to enable VPN NAT. Only for VPN-enabled gateway                                              |
 |      idle_timeout      |         ALL         |       -1        |        Value (in seconds) of idle timeout. If set, must be greater than 300; if unset, this feature is disabled. Only for VPN-enabled gateway        |
 | renegotiation_interval |         ALL         |       -1        | Value (in seconds) of the renegotiation interval. If set, must be greater than 300; if unset, this feature is disabled. Only for VPN-enabled gateway |
+|     saml_enabled       |         ALL         |      false      |                                                                  Enable/disable SAML.                                                                |
 
 #### Split Tunnel options
 |        Attribute         | Supported CSPs | Default value |                                                                                 Description                                                                                  |
