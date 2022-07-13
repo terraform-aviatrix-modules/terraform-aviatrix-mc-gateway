@@ -186,6 +186,24 @@ variable "single_ip_snat" {
   default     = false
 }
 
+variable "subnet_size" {
+  description = "Size of each cidr block in bits"
+  type        = number
+  default     = null
+}
+
+variable "num_of_subnet_pairs" {
+  description = "Number of public subnet and private subnet pair created in the VPC"
+  type        = number
+  default     = null
+}
+
+variable "resource_group" {
+  description = "The name of an existing resource group or a new resource group to be created for the Azure VNet"
+  type        = string
+  default     = ""
+}
+
 ## VPN options
 variable "enable_vpn" {
   description = "Set to true to enable user access through VPN to this gateway"
@@ -325,6 +343,18 @@ locals {
     gcp   = "n1-standard-1",
     azure = "Standard_B1ms",
     oci   = "VM.Standard2.2"
+  }
+
+  num_of_subnet_pairs = var.num_of_subnet_pairs != null ? var.num_of_subnet_pairs : lookup(local.num_of_subnet_pairs_map, local.cloud, null)
+  num_of_subnet_pairs_map = {
+    azure = 2,
+    aws   = 2,
+  }
+
+  subnet_size = var.subnet_size != null ? var.subnet_size : lookup(local.subnet_size_map, local.cloud, null)
+  subnet_size_map = {
+    azure = 28,
+    aws   = 28,
   }
 
   az1 = length(var.az1) > 0 ? var.az1 : lookup(local.az1_map, local.cloud, null)

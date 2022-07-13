@@ -61,7 +61,9 @@ The following variables are optional:
 | :------------: | :------------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
 |  insane_mode   |  AWS<br>Azure  |     false     |                                       Set to true to enable Aviatrix high performance encryption                                        |
 | single_ip_snat |      ALL       |     false     | Set to true to enable Source NAT feature in single_ip mode on the gateway. Please disable AWS NAT instance before enabling this feature |
-
+|       num_of_subnet_pairs       |      AWS, Azure       |          | Number of public subnet and private subnet pair created. Only Support AWS, Azure Provider |
+|       subnet_size               |      AWS, Azure       |          | Subnet Size. Only Supported for AWS, Azure Provider |
+|       resource_group            |      Azure       |          | Resource Group of the Azure VPC created |
 ### VPN options
 |       Attribute        |   Supported CSPs    |  Default value  |                                                                     Description                                                                      |
 | :--------------------: | :-----------------: | :-------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |

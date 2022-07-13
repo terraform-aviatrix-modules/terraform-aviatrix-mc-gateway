@@ -7,10 +7,9 @@ resource "aviatrix_vpc" "default" {
   cidr         = local.cloud == "gcp" ? null : var.cidr
   name         = local.name
 
-  # subnet_size = 
-  # num_subnet_pairs = 
-  # resource_group = 
-
+  subnet_size         = local.subnet_size
+  resource_group      = var.resource_group
+  num_of_subnet_pairs = local.num_of_subnet_pairs
   dynamic "subnets" {
     for_each = local.cloud == "gcp" ? ["dummy"] : [] # Workaround to make block conditional. Count not available on dynamic blocks
     content {
@@ -55,8 +54,7 @@ resource "aviatrix_gateway" "default" {
   customer_managed_keys = local.customer_managed_keys
   tags                  = var.tags
 
-  single_ip_snat = var.single_ip_snat
-
+  single_ip_snat            = var.single_ip_snat
   insane_mode               = var.insane_mode
   insane_mode_az            = local.insane_mode_az
   peering_ha_insane_mode_az = var.enable_ha ? local.ha_insane_mode_az : null
