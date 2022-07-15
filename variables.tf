@@ -186,6 +186,24 @@ variable "single_ip_snat" {
   default     = false
 }
 
+variable "subnet_size" {
+  description = "Size of each cidr block in bits"
+  type        = number
+  default     = null
+}
+
+variable "num_of_subnet_pairs" {
+  description = "Number of public subnet and private subnet pair created in the VPC"
+  type        = number
+  default     = null
+}
+
+variable "resource_group" {
+  description = "The name of an existing resource group or a new resource group to be created for the Azure VNet"
+  type        = string
+  default     = ""
+}
+
 ## VPN options
 variable "enable_vpn" {
   description = "Set to true to enable user access through VPN to this gateway"

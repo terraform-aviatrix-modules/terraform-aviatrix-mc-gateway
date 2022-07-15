@@ -1,9 +1,11 @@
 # terraform-aviatrix-mc-gateway
 
 ## Description
+
 Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an existing VPC/VNet/VCN.
 
 ## Compatibility
+
 | Module version | Terraform version | Controller version | Terraform provider version |
 | :------------: | :---------------: | :----------------: | :------------------------: |
 |     v1.0.2     |     >=1.0         |       >=6.7        |          ~>2.22.0          |
@@ -13,6 +15,7 @@ Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an exist
 - Check [release notes](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-gateway/blob/master/RELEASE_NOTES.md) for more details.
 
 ## Usage examples
+
 See [examples](https://github.com/terraform-aviatrix-modules/terraform-aviatrix-mc-gateway/blob/main/examples/)
 
 ## Variables
@@ -32,6 +35,7 @@ The following variables are required:
 The following variables are optional:
 
 ### HA options
+
 |       Attribute        | Supported CSPs |                        Default value                         |                                           Description                                            |
 | :--------------------: | :------------: | :----------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
 |     instance_size      |      ALL       | t3.small<br>n1-standard-1<br>Standard_B1ms<br>VM.Standard2.2 |                                Instance size for Aviatrix gateway                                |
@@ -43,6 +47,7 @@ The following variables are optional:
 |       ha_region        |      GCP       |                                                              | Region for multi-region HA. Secondary GCP region where subnet and HA gateway will be launched in |
 
 ### GW options
+
 |       Attribute       |   Supported CSPs    | Default value  |                                                Description                                                 |
 | :-------------------: | :-----------------: | :------------: | :--------------------------------------------------------------------------------------------------------: |
 |   use_existing_vpc    |         ALL         |     false      |                        Set to true to use an existing VPC instead of launching one                         |
@@ -57,12 +62,17 @@ The following variables are optional:
 |      az_support       |        Azure        |      true      |                                 Set to true if Azure region supports AZ's                                  |
 
 ### Advanced options
-|   Attribute    | Supported CSPs | Default value |                                                               Description                                                               |
-| :------------: | :------------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
-|  insane_mode   |  AWS<br>Azure  |     false     |                                       Set to true to enable Aviatrix high performance encryption                                        |
-| single_ip_snat |      ALL       |     false     | Set to true to enable Source NAT feature in single_ip mode on the gateway. Please disable AWS NAT instance before enabling this feature |
+
+|      Attribute      | Supported CSPs | Default value |                                                               Description                                                               |
+| :-----------------: | :------------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+|     insane_mode     |  AWS<br>Azure  |     false     |                                       Set to true to enable Aviatrix high performance encryption                                        |
+|   single_ip_snat    |      ALL       |     false     | Set to true to enable Source NAT feature in single_ip mode on the gateway. Please disable AWS NAT instance before enabling this feature |
+| num_of_subnet_pairs |      ALL       |               |                        Number of public subnet and private subnet pair created. Only Support AWS, Azure Provider                        |
+|     subnet_size     |      ALL       |               |                                           Subnet Size. Only Supported for AWS, Azure Provider                                           |
+|   resource_group    |      ALL       |               |                         Name of an existing resource group or a new resource group to be created for Azure VNet                         |
 
 ### VPN options
+
 |       Attribute        |   Supported CSPs    |  Default value  |                                                                     Description                                                                      |
 | :--------------------: | :-----------------: | :-------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
 |       enable_vpn       |         ALL         |      false      |                                            Set to true to enable user access through VPN to this gateway                                             |
@@ -76,6 +86,7 @@ The following variables are optional:
 |     saml_enabled       |         ALL         |      false      |                                                                  Enable/disable SAML.                                                                |
 
 #### Split Tunnel options
+
 |        Attribute         | Supported CSPs | Default value |                                                                                 Description                                                                                  |
 | :----------------------: | :------------: | :-----------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | enable_split_tunnel_mode |      ALL       |     true      |                                               Set to true to enable Split Tunnel Mode. Only available for VPN-enabled gateways                                               |
