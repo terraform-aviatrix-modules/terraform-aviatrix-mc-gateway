@@ -10,6 +10,7 @@ resource "aviatrix_vpc" "default" {
   subnet_size         = var.subnet_size
   resource_group      = var.resource_group
   num_of_subnet_pairs = var.num_of_subnet_pairs
+  
   dynamic "subnets" {
     for_each = local.cloud == "gcp" ? ["dummy"] : [] # Workaround to make block conditional. Count not available on dynamic blocks
     content {

@@ -1,5 +1,11 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.0.4
+
+### Add support for Advanced options for the VPC
+- VPC now supports customizing the number of subnet pairs and subnet size, in addition to specify an existing Resource Group for Azure cloud
+- Updated documentation for missing version notes
+
 ## v1.0.3
 
 ### Update provider constraint to 2.22.1 for the latest Controller 6.7-patch
