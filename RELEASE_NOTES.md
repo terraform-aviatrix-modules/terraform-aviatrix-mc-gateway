@@ -1,5 +1,12 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.1.0
+
+### Add support for 6.8 and provider version 2.23.0.
+
+### Add support for RX queue size for AWS gateways
+- Gateway now supports specifying AWS gateways' ethernet interface RX queue size
+
 ## v1.0.4
 
 ### Add support for Advanced options for the VPC

@@ -54,6 +54,7 @@ resource "aviatrix_gateway" "default" {
   enable_encrypt_volume = local.enable_encrypt_volume
   customer_managed_keys = local.customer_managed_keys
   tags                  = var.tags
+  rx_queue_size         = var.rx_queue_size
 
   single_ip_snat            = var.single_ip_snat
   insane_mode               = var.insane_mode

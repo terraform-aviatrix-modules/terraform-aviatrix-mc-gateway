@@ -204,6 +204,12 @@ variable "resource_group" {
   default     = ""
 }
 
+variable "rx_queue_size" {
+  description = "Gateway ethernet interface RX queue size. Once set, can't be deleted or disabled. For AWS only."
+  type        = string
+  default     = null
+}
+
 ## VPN options
 variable "enable_vpn" {
   description = "Set to true to enable user access through VPN to this gateway"

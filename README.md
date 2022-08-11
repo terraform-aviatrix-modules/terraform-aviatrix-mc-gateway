@@ -8,6 +8,7 @@ Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an exist
 
 | Module version | Terraform version | Controller version | Terraform provider version |
 | :------------: | :---------------: | :----------------: | :------------------------: |
+|     v1.1.0     |       >=1.0       |       >=6.8        |          ~>2.23.0          |
 |     v1.0.4     |       >=1.0       |       >=6.7        |          ~>2.22.1          |
 |     v1.0.3     |       >=1.0       |       >=6.7        |          ~>2.22.1          |
 |     v1.0.2     |       >=1.0       |       >=6.7        |          ~>2.22.0          |
@@ -68,6 +69,7 @@ The following variables are optional:
 |      Attribute      | Supported CSPs | Default value |                                                               Description                                                               |
 | :-----------------: | :------------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
 |     insane_mode     |  AWS<br>Azure  |     false     |                                       Set to true to enable Aviatrix high performance encryption                                        |
+|    rx_queue_size    |      AWS       |               |                            Gateway ethernet interface RX queue size. Once set, can't be deleted or disabled                             |
 |   single_ip_snat    |      ALL       |     false     | Set to true to enable Source NAT feature in single_ip mode on the gateway. Please disable AWS NAT instance before enabling this feature |
 | num_of_subnet_pairs |      ALL       |               |                        Number of public subnet and private subnet pair created. Only Support AWS, Azure Provider                        |
 |     subnet_size     |      ALL       |               |                                           Subnet Size. Only Supported for AWS, Azure Provider                                           |
