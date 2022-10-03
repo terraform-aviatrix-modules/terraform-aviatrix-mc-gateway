@@ -1,5 +1,9 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.2.0
+
+### Add support for 6.9 and provider version 2.24.x
+
 ## v1.1.0
 
 ### Add support for 6.8 and provider version 2.23.0.
