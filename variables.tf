@@ -173,6 +173,36 @@ variable "az_support" {
   default     = true
 }
 
+variable "allocate_new_eip" {
+  description = "Set to false to reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for this gateway"
+  type        = bool
+  default     = true
+}
+
+variable "eip" {
+  description = "Required when allocate_new_eip is false. It uses the specified EIP for this gateway"
+  type        = string
+  default     = null
+}
+
+variable "ha_eip" {
+  description = "Required when allocate_new_eip is false. It uses the specified EIP for this HA gateway"
+  type        = string
+  default     = null
+}
+
+variable "azure_eip_name_resource_group" {
+  description = "Name of public IP Address resource and its resource group in Azure to be assigned to the gateway instance"
+  type        = string
+  default     = null
+}
+
+variable "ha_azure_eip_name_resource_group" {
+  description = "Name of public IP Address resource and its resource group in Azure to be assigned to the HA gateway instance"
+  type        = string
+  default     = null
+}
+
 ## Advanced options
 variable "insane_mode" {
   description = "Set to true to enable Aviatrix high performance encryption. Only supported for AWS and Azure"

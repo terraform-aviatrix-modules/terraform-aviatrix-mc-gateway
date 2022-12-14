@@ -42,6 +42,13 @@ resource "aviatrix_gateway" "default" {
   fault_domain        = local.cloud == "oci" ? var.fault_domain : null
   zone                = local.zone
 
+  # Custom IP settings
+  allocate_new_eip                         = var.allocate_new_eip
+  eip                                      = var.eip
+  peering_ha_eip                           = var.ha_eip
+  azure_eip_name_resource_group            = var.azure_eip_name_resource_group
+  peering_ha_azure_eip_name_resource_group = var.ha_azure_eip_name_resource_group
+
   # HA options
   single_az_ha                   = var.single_az_ha
   peering_ha_subnet              = var.enable_ha ? local.ha_subnet : null
