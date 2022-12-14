@@ -51,18 +51,23 @@ The following variables are optional:
 
 ### GW options
 
-|       Attribute       |   Supported CSPs    | Default value  |                                                Description                                                 |
-| :-------------------: | :-----------------: | :------------: | :--------------------------------------------------------------------------------------------------------: |
-|   use_existing_vpc    |         ALL         |     false      |                        Set to true to use an existing VPC instead of launching one                         |
-|        vpc_id         |         ALL         |                |          VPC ID of an existing VPC, to launch gateway in. Required if `use_existing_vpc` is true           |
-|       gw_subnet       |         ALL         |                |        Subnet CIDR of an existing VPC, to launch gateway in. Required if `use_existing_vpc` is true        |
-|      hagw_subnet      |         ALL         |                | Subnet CIDR of existing VPC, to launch HA gateway in. Required if `enable_ha` & `use_existing_vpc` is true |
-| enable_encrypt_volume |         AWS         |      true      |                    Set to true to enable encryption of the EBS volume of the gateway(s)                    |
-| customer_managed_keys |         AWS         |                |                     AWS customer-managed key ID, to be used to encrypt the EBS volume                      |
-|         tags          |    AWS<br>Azure     |                |                                    Map of tags to assign to the gateway                                    |
-|          az1          | AWS<br>Azure<br>GCP | a<br>az-1<br>b |           Concatenate with region to form az names. eg. eu-central-1a. Used for Insane Mode only           |
-|          az2          | AWS<br>Azure<br>GCP | b<br>az-2<br>c |           Concatenate with region to form az names. eg. eu-central-1b. Used for Insane Mode only           |
-|      az_support       |        Azure        |      true      |                                 Set to true if Azure region supports AZ's                                  |
+|            Attribute             |   Supported CSPs    | Default value  |                                                                    Description                                                                    |
+| :------------------------------: | :-----------------: | :------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: |
+|         use_existing_vpc         |         ALL         |     false      |                                            Set to true to use an existing VPC instead of launching one                                            |
+|              vpc_id              |         ALL         |                |                              VPC ID of an existing VPC, to launch gateway in. Required if `use_existing_vpc` is true                              |
+|            gw_subnet             |         ALL         |                |                           Subnet CIDR of an existing VPC, to launch gateway in. Required if `use_existing_vpc` is true                            |
+|           hagw_subnet            |         ALL         |                |                    Subnet CIDR of existing VPC, to launch HA gateway in. Required if `enable_ha` & `use_existing_vpc` is true                     |
+|      enable_encrypt_volume       |         AWS         |      true      |                                       Set to true to enable encryption of the EBS volume of the gateway(s)                                        |
+|      customer_managed_keys       |         AWS         |                |                                         AWS customer-managed key ID, to be used to encrypt the EBS volume                                         |
+|               tags               |    AWS<br>Azure     |                |                                                       Map of tags to assign to the gateway                                                        |
+|               az1                | AWS<br>Azure<br>GCP | a<br>az-1<br>b |                              Concatenate with region to form az names. eg. eu-central-1a. Used for Insane Mode only                               |
+|               az2                | AWS<br>Azure<br>GCP | b<br>az-2<br>c |                              Concatenate with region to form az names. eg. eu-central-1b. Used for Insane Mode only                               |
+|            az_support            |        Azure        |      true      |                                                     Set to true if Azure region supports AZ's                                                     |
+|         allocate_new_eip         |         ALL         |      true      |    Set to false to reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for this gateway    |
+|               eip                |         ALL         |                |                               Required when `allocate_new_eip` is false. It uses the specified EIP for this gateway                               |
+|              ha_eip              |         ALL         |                |                             Required when `allocate_new_eip` is false. It uses the specified EIP for this HA gateway                              |
+|  azure_eip_name_resource_group   |        Azure        |                |  Name of public IP Address resource and its resource group in Azure to be assigned to the gateway instance. eg: <IP_Name>:<Resource_Group_Name>   |
+| ha_azure_eip_name_resource_group |        Azure        |                | Name of public IP Address resource and its resource group in Azure to be assigned to the HA gateway instance. eg: <IP_Name>:<Resource_Group_Name> |
 
 ### Advanced options
 
