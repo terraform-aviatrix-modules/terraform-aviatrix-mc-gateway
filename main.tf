@@ -10,7 +10,7 @@ resource "aviatrix_vpc" "default" {
   subnet_size         = var.subnet_size
   resource_group      = var.resource_group
   num_of_subnet_pairs = var.num_of_subnet_pairs
-  
+
   dynamic "subnets" {
     for_each = local.cloud == "gcp" ? ["dummy"] : [] # Workaround to make block conditional. Count not available on dynamic blocks
     content {
@@ -41,6 +41,13 @@ resource "aviatrix_gateway" "default" {
   availability_domain = local.cloud == "oci" ? var.availability_domain : null
   fault_domain        = local.cloud == "oci" ? var.fault_domain : null
   zone                = local.zone
+
+  # Custom IP settings
+  allocate_new_eip                         = var.allocate_new_eip
+  eip                                      = var.eip
+  peering_ha_eip                           = var.ha_eip
+  azure_eip_name_resource_group            = var.azure_eip_name_resource_group
+  peering_ha_azure_eip_name_resource_group = var.ha_azure_eip_name_resource_group
 
   # HA options
   single_az_ha                   = var.single_az_ha
