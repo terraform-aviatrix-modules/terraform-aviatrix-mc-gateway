@@ -12,7 +12,7 @@ The following examples will launch a new VPC + gateway with HA and Insane Mode (
 # AWS
 module aws_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -32,7 +32,7 @@ module aws_gw_module {
 # Azure
 module arm_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -53,7 +53,7 @@ module arm_gw_module {
 # GCP
 module gcp_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -71,7 +71,7 @@ module gcp_gw_module {
 # OCI
 module oci_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "oci"
     name    = "foo-oci"
@@ -97,7 +97,7 @@ The following examples will launch a gateway with HA, in an existing VPC/VNet/VC
 # AWS
 module aws_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -119,7 +119,7 @@ module aws_gw_module {
 # Azure
 module arm_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -141,7 +141,7 @@ module arm_gw_module {
 # GCP
 module gcp_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -160,7 +160,7 @@ module gcp_gw_module {
 # OCI
 module oci_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "oci"
     name    = "foo-oci"
@@ -188,7 +188,7 @@ The following examples will launch a VPC + VPN gateway, with some sample VPN con
 # AWS
 module aws_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -219,7 +219,7 @@ module aws_gw_module {
 # Azure
 module arm_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -250,7 +250,7 @@ module arm_gw_module {
 # GCP
 module gcp_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -277,7 +277,7 @@ module gcp_gw_module {
 # OCI
 module oci_gw_module {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.2.0"
+    version = "1.2.1"
 
     cloud   = "oci"
     name    = "foo-oci"
