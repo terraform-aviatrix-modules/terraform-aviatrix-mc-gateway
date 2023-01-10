@@ -13,6 +13,16 @@
 ## v1.3.0
 ### Add support for Controller 7.0 and provider version 3.0.0.
 
+## v1.2.1
+### Add support for setting custom IP addresses
+- Gateway now supports specifying the public IP address for both the primary and HA instance through the use of the following variables:
+  - ``allocate_new_eip``
+  - ``eip``
+  - ``ha_eip``
+  - ``azure_eip_name_resource_group``
+  - ``ha_azure_eip_name_resource_group``
+- This feature is available for all the current supported CSPs: AWS, Azure, GCP, and OCI
+
 ## v1.2.0
 ### Add support for Controller 6.9 and provider version 2.24.x
 
