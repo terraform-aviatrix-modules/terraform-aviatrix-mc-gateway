@@ -1,5 +1,15 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.1.1
+### Add support for setting custom IP addresses
+- Gateway now supports specifying the public IP address for both the primary and HA instance through the use of the following variables:
+  - ``allocate_new_eip``
+  - ``eip``
+  - ``ha_eip``
+  - ``azure_eip_name_resource_group``
+  - ``ha_azure_eip_name_resource_group``
+- This feature is available for all the current supported CSPs: AWS, Azure, GCP, and OCI
+
 ## v1.1.0
 
 ### Add support for 6.8 and provider version 2.23.0.

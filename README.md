@@ -8,6 +8,7 @@ Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an exist
 
 | Module version | Terraform version | Controller version | Terraform provider version |
 | :------------: | :---------------: | :----------------: | :------------------------: |
+|     v1.1.1     |       >=1.0       |       >=6.8        |          ~>2.23.0          |
 |     v1.1.0     |       >=1.0       |       >=6.8        |          ~>2.23.0          |
 |     v1.0.4     |       >=1.0       |       >=6.7        |          ~>2.22.1          |
 |     v1.0.3     |       >=1.0       |       >=6.7        |          ~>2.22.1          |
