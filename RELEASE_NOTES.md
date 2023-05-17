@@ -1,5 +1,8 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.4.0
+### Add support for Controller 7.1 and provider version 3.1.0.
+
 ## v1.3.1
 ### Add support for setting custom IP addresses
 - Gateway now supports specifying the public IP address for both the primary and HA instance through the use of the following variables:
