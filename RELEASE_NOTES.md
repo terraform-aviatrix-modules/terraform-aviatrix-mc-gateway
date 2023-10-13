@@ -1,5 +1,11 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.4.1
+### Add support for AWS/Azure China/Gov regions
+- Gateways can now be launched in either AWS China/Gov and Azure China/Gov regions by specifying the proper ``region`` and ``cloud``
+  - ``cloud`` input should still be either "aws" or "azure" for this feature
+  - ``region`` input should specify a valid AWS China/Gov or Azure China/Gov region (such as "us-gov-west-1" for AWS Gov)
+
 ## v1.4.0
 ### Add support for Controller 7.1 and provider version 3.1.0.
 

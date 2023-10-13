@@ -12,7 +12,7 @@ The following examples will launch a new VPC + gateway with HA and Insane Mode (
 # AWS
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -32,7 +32,7 @@ module "aws_gw_module" {
 # Azure
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -53,7 +53,7 @@ module "arm_gw_module" {
 # GCP
 module "gcp_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -71,7 +71,7 @@ module "gcp_gw_module" {
 # OCI
 module "oci_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "oci"
     name    = "foo-oci"
@@ -88,6 +88,88 @@ module "oci_gw_module" {
     ha_fault_domain         = "FAULT-DOMAIN-2"
 }
 ```
+```
+# AWS Gov
+module "aws_gw_module" {
+    source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
+    version = "1.4.1"
+
+    cloud   = "aws"
+    name    = "foo-aws-gov"
+    region  = "us-gov-west-1"
+    cidr    = "10.16.0.0/16"
+    account = "AWSGov-Devops"
+
+    # optional
+    enable_ha   = true
+    insane_mode = true
+    tags = {
+        "owner" = "bar"
+    }
+}
+```
+```
+# AWS China
+module "aws_gw_module" {
+    source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
+    version = "1.4.1"
+
+    cloud   = "aws"
+    name    = "foo-aws-china"
+    region  = "cn-north-1"
+    cidr    = "10.17.0.0/16"
+    account = "AWSChina-Devops"
+
+    # optional
+    enable_ha   = true
+    insane_mode = true
+    tags = {
+        "owner" = "bar"
+    }
+}
+```
+```
+# Azure Gov
+module "arm_gw_module" {
+    source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
+    version = "1.4.1"
+
+    cloud   = "azure"
+    name    = "foo-azure-gov"
+    region  = "USGov Virginia"
+    cidr    = "10.18.0.0/16"
+    account = "AzureGov-Devops"
+    instance_size = "Standard_D3_v2" # note Insane Mode supports specific instance sizes
+
+    # optional
+    enable_ha   = true
+    insane_mode = true
+    tags = {
+        "owner" = "bar"
+    }
+}
+```
+```
+# Azure China
+module "arm_gw_module" {
+    source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
+    version = "1.4.1"
+
+    cloud   = "azure"
+    name    = "foo-azure-china"
+    region  = "China East"
+    cidr    = "10.19.0.0/16"
+    account = "AzureChina-Devops"
+    instance_size = "Standard_D3_v2" # note Insane Mode supports specific instance sizes
+
+    # optional
+    enable_ha   = true
+    insane_mode = true
+    tags = {
+        "owner" = "bar"
+    }
+}
+```
 
 ## Launching module with an existing VPC/VNet/VCN
 
@@ -97,7 +179,7 @@ The following examples will launch a gateway with HA, in an existing VPC/VNet/VC
 # AWS
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -119,7 +201,7 @@ module "aws_gw_module" {
 # Azure
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -141,7 +223,7 @@ module "arm_gw_module" {
 # GCP
 module "gcp_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -160,7 +242,7 @@ module "gcp_gw_module" {
 # OCI
 module "oci_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "oci"
     name    = "foo-oci"
@@ -188,7 +270,7 @@ The following examples will launch a VPC + VPN gateway, with some sample VPN con
 # AWS
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -219,7 +301,7 @@ module "aws_gw_module" {
 # Azure
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -250,7 +332,7 @@ module "arm_gw_module" {
 # GCP
 module "gcp_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -277,7 +359,7 @@ module "gcp_gw_module" {
 # OCI
 module "oci_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "1.4.0"
+    version = "1.4.1"
 
     cloud   = "oci"
     name    = "foo-oci"
