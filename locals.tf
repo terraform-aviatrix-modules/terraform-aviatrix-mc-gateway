@@ -9,12 +9,25 @@ locals {
   insane_mode_subnet    = cidrsubnet(local.cidr, local.newbits, local.netnum - 2)
   ha_insane_mode_subnet = cidrsubnet(local.cidr, local.newbits, local.netnum - 1)
 
-  cloud_type = lookup(local.cloud_type_map, local.cloud, null)
+  is_china = can(regex("^cn-|^china ", lower(var.region))) && contains(["aws", "azure"], local.cloud)
+  is_gov   = can(regex("^us-gov|^usgov |^usdod ", lower(var.region))) && contains(["aws", "azure"], local.cloud)
+
+  cloud_type = local.is_china ? lookup(local.cloud_type_map_china, local.cloud, null) : (local.is_gov ? lookup(local.cloud_type_map_gov, local.cloud, null) : lookup(local.cloud_type_map, local.cloud, null))
   cloud_type_map = {
     aws   = 1,
     gcp   = 4,
     azure = 8,
     oci   = 16
+  }
+
+  cloud_type_map_china = {
+    aws   = 1024,
+    azure = 2048,
+  }
+
+  cloud_type_map_gov = {
+    azure = 32,
+    aws   = 256,
   }
 
   region         = local.cloud == "gcp" ? "${var.region}-${local.az1}" : var.region
