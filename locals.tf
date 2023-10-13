@@ -59,17 +59,20 @@ locals {
     oci   = "VM.Standard2.2"
   }
 
+  # Auto disable AZ support for Gov and DOD regions in Azure
+  az_support = local.is_gov ? false : var.az_support
+
   az1 = length(var.az1) > 0 ? var.az1 : lookup(local.az1_map, local.cloud, null)
   az1_map = {
     aws   = "a",
-    azure = var.az_support ? "az-1" : null,
+    azure = local.az_support ? "az-1" : null,
     gcp   = "b",
   }
 
   az2 = length(var.az2) > 0 ? var.az2 : lookup(local.az2_map, local.cloud, null)
   az2_map = {
     aws   = "b",
-    azure = var.az_support ? "az-2" : null,
+    azure = local.az_support ? "az-2" : null,
     gcp   = "c",
   }
 
