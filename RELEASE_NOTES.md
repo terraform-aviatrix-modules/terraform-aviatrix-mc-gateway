@@ -5,6 +5,11 @@
 - Gateways can now be launched in either AWS China/Gov and Azure China/Gov regions by specifying the proper ``region`` and ``cloud``
   - ``cloud`` input should still be either "aws" or "azure" for this feature
   - ``region`` input should specify a valid AWS China/Gov or Azure China/Gov region (such as "us-gov-west-1" for AWS Gov)
+### Add support for Alibaba Cloud
+- Gateways can now be launched in Alibaba Cloud
+  - ``cloud`` input should be "Ali" (case-insensitive)
+  - ``region`` input should specify a valid Alibaba Cloud region (full name including the '()')
+  - ``instance_size`` input should specify a valid Alibaba Cloud instance size. New default is "ecs.g5ne.large"
 
 ## v1.4.0
 ### Add support for Controller 7.1 and provider version 3.1.0.
