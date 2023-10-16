@@ -184,10 +184,6 @@ module "ali_gw_module" {
 
     # optional
     enable_ha   = true
-    insane_mode = true
-    tags = {
-        "owner" = "bar"
-    }
 }
 ```
 
