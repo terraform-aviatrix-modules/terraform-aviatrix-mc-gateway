@@ -17,7 +17,8 @@ locals {
     aws   = 1,
     gcp   = 4,
     azure = 8,
-    oci   = 16
+    oci   = 16,
+    ali   = 8192,
   }
 
   cloud_type_map_china = {
@@ -56,7 +57,8 @@ locals {
     aws   = "t3.small",
     gcp   = "n1-standard-1",
     azure = "Standard_B1ms",
-    oci   = "VM.Standard2.2"
+    oci   = "VM.Standard2.2",
+    ali   = "ecs.g5ne.large",
   }
 
   # Auto disable AZ support for Gov and DOD regions in Azure
@@ -99,6 +101,7 @@ locals {
     azure = 0,
     gcp   = 0,
     oci   = 0,
+    ali   = 0,
   }
 
   # If using existing VPC, and is Azure or OCI, set HA subnet as gw_subnet, otherwise as hagw_subnet (cont)
@@ -129,6 +132,7 @@ locals {
     azure = 0,
     gcp   = length(var.ha_region) > 0 ? 1 : 0
     oci   = 0,
+    ali   = 0,
   }
 
   # VPN options
