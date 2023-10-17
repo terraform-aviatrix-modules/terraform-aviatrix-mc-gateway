@@ -170,6 +170,22 @@ module "arm_gw_module" {
     }
 }
 ```
+```
+# Alibaba
+module "ali_gw_module" {
+    source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
+    version = "1.4.1"
+
+    cloud   = "ali"
+    name    = "foo-ali"
+    region  = "acs-us-west-1 (Silicon Valley)"
+    cidr    = "10.20.0.0/16"
+    account = "Ali-Devops"
+
+    # optional
+    enable_ha   = true
+}
+```
 
 ## Launching module with an existing VPC/VNet/VCN
 

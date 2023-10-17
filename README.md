@@ -34,7 +34,7 @@ The following variables are required:
 
 |      Attribute      |                                       Description                                        |
 | :-----------------: | :--------------------------------------------------------------------------------------: |
-|        cloud        |      Cloud where this will be deployed. Valid values: "AWS", "GCP", "Azure", "OCI"       |
+|        cloud        |   Cloud where this will be deployed. Valid values: "AWS", "GCP", "Azure", "OCI", "Ali"   |
 |        name         |                       Name for this VPC/VNet/VCN and its gateways                        |
 |       region        |                       Cloud region to deploy this VPC/VNet/VCN in                        |
 |        cidr         | What IP CIDR to use for this VPC/VNet/VCN (Not required when `use_existing_vpc` is true) |
@@ -46,15 +46,15 @@ The following variables are optional:
 
 ### HA options
 
-|       Attribute        | Supported CSPs |                        Default value                         |                                           Description                                            |
-| :--------------------: | :------------: | :----------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
-|     instance_size      |      ALL       | t3.small<br>n1-standard-1<br>Standard_B1ms<br>VM.Standard2.2 |                                Instance size for Aviatrix gateway                                |
-|      single_az_ha      |      ALL       |                             true                             |                   Set to true to enable Controller-managed gateway HA feature                    |
-|       enable_ha        |      ALL       |                            false                             |                    Set to true to enable HA and deploy a primary + HA gateway                    |
-| ha_availability_domain |      OCI       |                                                              |            Availability domain for OCI HA gateway. Required for OCI if HA is enabled             |
-|    ha_fault_domain     |      OCI       |                                                              |                Fault domain for OCI HA gateway. Required for OCI if HA is enabled                |
-|        ha_cidr         |      GCP       |                                                              |           IP CIDR to be used to create the HA region subnet. Required if HA is enabled           |
-|       ha_region        |      GCP       |                                                              | Region for multi-region HA. Secondary GCP region where subnet and HA gateway will be launched in |
+|       Attribute        | Supported CSPs |                                 Default value                                  |                                           Description                                            |
+| :--------------------: | :------------: | :----------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
+|     instance_size      |      ALL       | t3.small<br>n1-standard-1<br>Standard_B1ms<br>VM.Standard2.2<br>ecs.g5ne.large |                                Instance size for Aviatrix gateway                                |
+|      single_az_ha      |      ALL       |                                      true                                      |                   Set to true to enable Controller-managed gateway HA feature                    |
+|       enable_ha        |      ALL       |                                     false                                      |                    Set to true to enable HA and deploy a primary + HA gateway                    |
+| ha_availability_domain |      OCI       |                                                                                |            Availability domain for OCI HA gateway. Required for OCI if HA is enabled             |
+|    ha_fault_domain     |      OCI       |                                                                                |                Fault domain for OCI HA gateway. Required for OCI if HA is enabled                |
+|        ha_cidr         |      GCP       |                                                                                |           IP CIDR to be used to create the HA region subnet. Required if HA is enabled           |
+|       ha_region        |      GCP       |                                                                                | Region for multi-region HA. Secondary GCP region where subnet and HA gateway will be launched in |
 
 ### GW options
 

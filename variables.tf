@@ -4,8 +4,8 @@ variable "cloud" {
   type        = string
 
   validation {
-    condition     = contains(["aws", "azure", "oci", "gcp"], lower(var.cloud))
-    error_message = "Invalid cloud type. Choose AWS, Azure, GCP or OCI."
+    condition     = contains(["aws", "azure", "gcp", "oci", "ali"], lower(var.cloud))
+    error_message = "Invalid cloud type. Choose AWS, Azure, GCP, OCI or Ali."
   }
 }
 
