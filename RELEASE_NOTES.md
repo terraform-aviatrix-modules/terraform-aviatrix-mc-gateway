@@ -3,6 +3,7 @@
 ## v1.4.2
 ### Make amount of gateways variable.
 Using the variable `gw_amount`, users can now set the amount of gateways they want to create. The default is 1. This is particularly useful for multiple uservpn gateways.
+It automatically alternates over two subnets in different AZ's.
 
 ## v1.4.1
 ### Add support for AWS/Azure China/Gov regions

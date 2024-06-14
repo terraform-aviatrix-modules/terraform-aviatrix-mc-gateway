@@ -36,7 +36,7 @@ resource "aviatrix_gateway" "default" {
   account_name        = var.account
   vpc_id              = var.use_existing_vpc ? var.vpc_id : aviatrix_vpc.default[0].vpc_id
   vpc_reg             = local.region
-  subnet              = local.subnet
+  subnet              = [local.subnet, local.ha_subnet][count.index % 2] #When gw_amount > 1, alternate over subnet and ha_subnet
   gw_name             = count.index == 0 ? local.name : format("%s-%s", local.name, count.index + 1)
   gw_size             = local.instance_size
   availability_domain = local.cloud == "oci" ? var.availability_domain : null
