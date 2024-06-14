@@ -332,3 +332,10 @@ variable "saml_enabled" {
   type        = bool
   default     = null
 }
+
+variable "gw_amount" {
+  description = "Amount of gateways to be created."
+  type        = number
+  default     = 1
+  nullable    = false
+}

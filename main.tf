@@ -31,12 +31,13 @@ resource "aviatrix_vpc" "default" {
 }
 
 resource "aviatrix_gateway" "default" {
+  count               = var.gw_amount
   cloud_type          = local.cloud_type
   account_name        = var.account
   vpc_id              = var.use_existing_vpc ? var.vpc_id : aviatrix_vpc.default[0].vpc_id
   vpc_reg             = local.region
   subnet              = local.subnet
-  gw_name             = local.name
+  gw_name             = count.index == 0 ? local.name : format("%s-%s", local.name, count.index + 1)
   gw_size             = local.instance_size
   availability_domain = local.cloud == "oci" ? var.availability_domain : null
   fault_domain        = local.cloud == "oci" ? var.fault_domain : null

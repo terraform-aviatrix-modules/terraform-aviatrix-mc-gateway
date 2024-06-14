@@ -1,5 +1,9 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v1.4.2
+### Make amount of gateways variable.
+Using the variable `gw_amount`, users can now set the amount of gateways they want to create. The default is 1. This is particularly useful for multiple uservpn gateways.
+
 ## v1.4.1
 ### Add support for AWS/Azure China/Gov regions
 - Gateways can now be launched in either AWS China/Gov and Azure China/Gov regions by specifying the proper ``region`` and ``cloud``

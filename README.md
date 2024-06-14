@@ -8,6 +8,7 @@ Deploys a VPC/VNet/VCN and Aviatrix gateway. It is also possible to use an exist
 
 | Module version | Terraform version | Controller version | Terraform provider version |
 | :------------: | :---------------: | :----------------: | :------------------------: |
+|     v1.4.2     |       >=1.0       |       >=7.1        |          ~>3.1.0           |
 |     v1.4.1     |       >=1.0       |       >=7.1        |          ~>3.1.0           |
 |     v1.4.0     |       >=1.0       |       >=7.1        |          ~>3.1.0           |
 |     v1.3.1     |       >=1.0       |       >=7.0        |          ~>3.0.0           |
@@ -75,6 +76,7 @@ The following variables are optional:
 |              ha_eip              |         ALL         |                |                             Required when `allocate_new_eip` is false. It uses the specified EIP for this HA gateway                              |
 |  azure_eip_name_resource_group   |        Azure        |                |  Name of public IP Address resource and its resource group in Azure to be assigned to the gateway instance. eg: <IP_Name>:<Resource_Group_Name>   |
 | ha_azure_eip_name_resource_group |        Azure        |                | Name of public IP Address resource and its resource group in Azure to be assigned to the HA gateway instance. eg: <IP_Name>:<Resource_Group_Name> |
+|            gw_amount             |         ALL         |        1       |                                                         Amounty of gateways to be created.                                                        |
 
 ### Advanced options
 
