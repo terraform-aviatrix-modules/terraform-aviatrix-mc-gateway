@@ -5,4 +5,5 @@ output "vpc" {
 output "gateway" {
   description = "The Aviatrix gateway created, as an object with all attributes outputted."
   value       = aviatrix_gateway.default
+  sensitive   = true
 }
