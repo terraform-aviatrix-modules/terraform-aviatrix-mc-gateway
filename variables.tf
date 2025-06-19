@@ -339,3 +339,10 @@ variable "gw_amount" {
   default     = 1
   nullable    = false
 }
+
+variable "custom_elb_name" {
+  description = "Set to true to use custom ELB name. If false, the module will set elb_name to `null`."
+  type        = bool
+  default     = true
+}
+
