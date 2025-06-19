@@ -1,5 +1,23 @@
 # terraform-aviatrix-mc-gateway - release notes
 
+## v8.0.0
+### Version Alignment
+Starting with this release, this Terraform module will align its version with the Aviatrix Controller version. This means the module version has jumped from v1.7.1 to v8.0.0 to align with the Controller’s latest major version. This change makes it easier to determine which module version is compatible with which Controller version.
+
+### Relaxed version constraints
+Starting with this release, this Terraform module will move from a pessimistic constraint operator (`~>`) to a more relaxed provider version constraint (`>=`). As a result of this, module versions 8.0.0 and above can be used with newer (future) version of the Aviatrix Terraform provider, with the constraint that the newer provider version cannot have behavioral changes.
+The reason for this change is to allow users to upgrade their controller and Terraform provider versions, without requiring to upgrade all their Terraform module versions, unless any of the following exceptions are true:
+- User requires access to new feature flags, that are only exposed in newer Terraform module versions.
+- The new Terraform provider version does not introduce behavior changes that are incompatible with the module version.
+
+### Future releases
+A new major module version will be released _only_ when:
+- A new major Aviatrix Terraform provider has been released AND introduces new features or breaking changes.
+
+A new minor module version will be released when:
+- Bug fixes or missed features that were already available in the same release train as the Aviatrix Terraform provider.
+
+
 ## v1.4.2
 ### Make amount of gateways variable.
 Using the variable `gw_amount`, users can now set the amount of gateways they want to create. The default is 1. This is particularly useful for multiple uservpn gateways.
