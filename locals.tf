@@ -61,8 +61,8 @@ locals {
     ali   = "ecs.g5ne.large",
   }
 
-  # Auto disable AZ support for Gov and DOD regions in Azure
-  az_support = local.is_gov ? false : var.az_support
+  # Auto disable AZ support for Gov, DOD and China regions in Azure
+  az_support = local.is_gov || local.is_china ? false : var.az_support
 
   az1 = length(var.az1) > 0 ? var.az1 : lookup(local.az1_map, local.cloud, null)
   az1_map = {

@@ -12,7 +12,7 @@ The following examples will launch a new VPC + gateway with HA and Insane Mode (
 # AWS
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -32,7 +32,7 @@ module "aws_gw_module" {
 # Azure
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -53,7 +53,7 @@ module "arm_gw_module" {
 # GCP
 module "gcp_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -71,7 +71,7 @@ module "gcp_gw_module" {
 # OCI
 module "oci_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "oci"
     name    = "foo-oci"
@@ -92,7 +92,7 @@ module "oci_gw_module" {
 # AWS Gov
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "aws"
     name    = "foo-aws-gov"
@@ -112,7 +112,7 @@ module "aws_gw_module" {
 # AWS China
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "aws"
     name    = "foo-aws-china"
@@ -132,12 +132,12 @@ module "aws_gw_module" {
 # Azure Gov
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "azure"
     name    = "foo-azure-gov"
     region  = "USGov Virginia"
-    cidr    = "10.18.0.0/16"
+    cidr    = "10.18.0.1/16"
     account = "AzureGov-Devops"
     instance_size = "Standard_D3_v2" # note Insane Mode supports specific instance sizes
 
@@ -153,7 +153,7 @@ module "arm_gw_module" {
 # Azure China
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "azure"
     name    = "foo-azure-china"
@@ -174,7 +174,7 @@ module "arm_gw_module" {
 # Alibaba
 module "ali_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "ali"
     name    = "foo-ali"
@@ -195,7 +195,7 @@ The following examples will launch a gateway with HA, in an existing VPC/VNet/VC
 # AWS
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -217,7 +217,7 @@ module "aws_gw_module" {
 # Azure
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -239,7 +239,7 @@ module "arm_gw_module" {
 # GCP
 module "gcp_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -248,7 +248,7 @@ module "gcp_gw_module" {
     use_existing_vpc    = true
     vpc_id              = "gcp-foo-vpc"
     region              = "us-central1"
-    gw_subnet           = "10.128.0.0/20"
+    gw_subnet           = "10.128.0.1/20"
     hagw_subnet         = "10.142.0.0/20"
 
     enable_ha = true
@@ -258,7 +258,7 @@ module "gcp_gw_module" {
 # OCI
 module "oci_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "oci"
     name    = "foo-oci"
@@ -286,7 +286,7 @@ The following examples will launch a VPC + VPN gateway, with some sample VPN con
 # AWS
 module "aws_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "aws"
     name    = "foo-aws"
@@ -317,7 +317,7 @@ module "aws_gw_module" {
 # Azure
 module "arm_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "azure"
     name    = "foo-azure"
@@ -348,7 +348,7 @@ module "arm_gw_module" {
 # GCP
 module "gcp_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "gcp"
     name    = "foo-gcp"
@@ -375,7 +375,7 @@ module "gcp_gw_module" {
 # OCI
 module "oci_gw_module" {
     source  = "terraform-aviatrix-modules/mc-gateway/aviatrix"
-    version = "8.0.0"
+    version = "8.0.1"
 
     cloud   = "oci"
     name    = "foo-oci"
