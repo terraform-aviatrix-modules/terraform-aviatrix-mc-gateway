@@ -76,7 +76,7 @@ resource "aviatrix_gateway" "default" {
   max_vpn_conn   = var.enable_vpn ? var.max_vpn_connections : null
   enable_vpn_nat = var.enable_vpn ? var.enable_vpn_nat : null
   enable_elb     = local.enable_elb
-  elb_name       = local.enable_elb ? "${local.name}-elb" : null
+  elb_name       = local.enable_elb && var.custom_elb_name ? "${local.name}-elb" : null
   saml_enabled   = var.saml_enabled
 
   idle_timeout           = var.enable_vpn && (var.idle_timeout > 300) ? var.idle_timeout : null
